@@ -7,6 +7,7 @@ import 'package:yew_technologies/View/Account/Account_Screen.dart';
 import 'package:yew_technologies/View/Home_Screen.dart';
 
 import 'View/Bill/Bill_Screen.dart';
+import 'View/Item/Cart_Screen.dart';
 import 'View/Item/Item_Screen.dart';
 import 'View/Order/Order_Screen.dart';
 import 'View/Stock/Stock_Screen.dart';
@@ -42,7 +43,7 @@ class _My_AppState extends State<My_App> {
 
 
 
-       // 'Cart':(context)=>Cart(),
+       'Cart':(context)=>Cart(),
       //  'O_comp':(context)=>O_complet(),
 
       },

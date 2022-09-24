@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:yew_technologies/Controlar/Item____1.dart';
+import 'package:yew_technologies/View/Home_Screen.dart';
 
 import '../../Modal/Get_Item.dart';
 
@@ -31,7 +32,7 @@ class _ItemState extends State<Item> {
                     Icons.shopping_cart,
                     size: 36.0,
                   ),
-                  if (it.itemlent.length > 0)
+                  if (it.NetAmount.length > 0)
                     Padding(
                       padding: const EdgeInsets.only(left: 2.0),
                       child: CircleAvatar(
@@ -39,7 +40,7 @@ class _ItemState extends State<Item> {
                         backgroundColor: Colors.red,
                         foregroundColor: Colors.white,
                         child: Text(
-                          "${it.itemlent.length.obs}",
+                          "${it.NetAmount.length.obs}",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 12.0,
@@ -50,8 +51,8 @@ class _ItemState extends State<Item> {
                 ],
               ),
               onTap: () {
-                if (it.itemlent.isNotEmpty)
-                Get.toNamed('Home');
+                if (it.NetAmount.isNotEmpty)
+                Get.toNamed('Cart');
               },
             ),
           )
@@ -119,8 +120,7 @@ class _ItemState extends State<Item> {
                                                               setState(() {
                                                                 it.Total?.isNaN;
                                                                 it.c?.isEmpty;
-                                                                it.c = data
-                                                                    .itemName;
+                                                                it.c = data.itemName;
                                                                 it.aa?.isNaN;
                                                                 it.bb?.isNaN;
                                                                 it.tttt.isNaN;

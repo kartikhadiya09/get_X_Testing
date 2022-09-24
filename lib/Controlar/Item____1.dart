@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:yew_technologies/View/Item/Item_Screen.dart';
 
 import '../Modal/Get_Item.dart';
 
@@ -16,10 +16,11 @@ class  Itemcontrolar extends GetxController {
   String? c;
   int? aa;
     int? bb;
+  List<dynamic> qyntty=[];
   double tttt = 0;
   dynamic TAMOUNT=0;
   double tooooo = 0;
-  List itemlent = [].obs;
+  RxList itemlent = [].obs;
 double? TotalwGST;
 double Totarate=0;
   List<dynamic> accountList = [];
@@ -127,26 +128,26 @@ double Totarate=0;
                       ),
                     ),
 
-                    ElevatedButton(
-                      onPressed: () {
-                        itemlent.add(1);
 
+                         ElevatedButton(
+                          onPressed: () {
+                            itemlent.add(1);
+                            aa = int.parse(Qty.text);
+                            bb = int.parse(rate.text);
+                            tttt = (aa! * bb!) * 18;
+                            tooooo = tttt/100+tttt/18;
+                            TAMOUNT += tooooo;
+                            Totarate=tttt/100+tttt/18 ;
+                             TotalwGST=tooooo/aa!;
+                            adddata( Total_Amount, TotalwGST,7,7,aa, bb, TAMOUNT, 30,c);
+                            if (formKey.currentState!.validate()) {
+                           Get.back();
+                            }
 
-                        aa = int.parse(Qty.text);
-                        bb = int.parse(rate.text);
-                        tttt = (aa! * bb!) * 18;
-                        tooooo = tttt/100+tttt/18;
-                        TAMOUNT += tooooo;
-                        Totarate=tttt/100+tttt/18 ;
-                         TotalwGST=tooooo/aa!;
-                        adddata( Total_Amount, TotalwGST,7,7, Qty.text, rate.text, TAMOUNT, 30,c);
-                        if (formKey.currentState!.validate()) {
-                          Navigator.pop(context);
-                        }
+                          },
+                          child: const Text("Get Account"),
+                        ),
 
-                      },
-                      child: const Text("Get Account"),
-                    ),
                   ]),
                 )),
 
@@ -161,7 +162,7 @@ double Totarate=0;
     NetAmount.add(net_am);
     yearid.add(y_id);
     compid.add(c_id);
-    _Qty.add(_Q);
+    qyntty.add(_Q);
     Rate.add(_Rate);
     Amount.add(amoun);
     Unit_Id.add(u_id);
@@ -173,12 +174,11 @@ double Totarate=0;
   List<dynamic> Account_iI =[];
   List<dynamic> Total_Amount=[];
   List<dynamic> NetAmount=[];
-  List<int> yearid=[];
-  List<int> compid=[];
-  List<int> _Qty=[];
-  List<int> Rate=[];
-  List<int> Amount=[];
-  List<int> Unit_Id=[];
+  List<dynamic> yearid=[];
+  List<dynamic> compid=[];
+  List<dynamic> Rate=[];
+  List<dynamic> Amount=[];
+  List<dynamic> Unit_Id=[];
   List<String> NameItem= [];
 
 
